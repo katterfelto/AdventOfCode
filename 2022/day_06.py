@@ -43,12 +43,12 @@ def part2(data):
             buffer.pop()
     return -1
 
-result1 = part1(data[0])              
-result2 = part2(data[0])              
-
 ######################################################
 # Output the results
 ######################################################
+result1 = part1(data[0])              
+result2 = part2(data[0])              
+
 print(f'Results - {year}/{day:02d}:')
 print(f"Result 1 - {result1}") # 1965
 print(f"Result 2 - {result2}") # 2773

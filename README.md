@@ -5,3 +5,5 @@ My solutions to the brilliant [Advent of Code](https://adventofcode.com/) create
 ## My setup
 
 I'm currenty working in python and using the [advent-of-code-data](https://pypi.org/project/advent-of-code-data/) python module to access the input data. I'm using VS Code and executing the scripts from the root of the repo (hence the paths to arcive the input data files).
+
+After day 6 (2022) I realised how unit tests could ease the testing, especially since Eric provides test data and the respective results. I then restructured the previous days solutions so I can retro fit the unit tests.
