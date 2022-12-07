@@ -8,7 +8,7 @@ def getData(year, day):
     data = None
     if not exists(f'./inputData/{year}/{day:02d}.txt'):
         with open(f'./inputData/{year}/{day:02d}.txt', 'w') as f:
-            f.write(aocd.get_data(day=day, year=2022))
+            f.write(aocd.get_data(day=day, year=year))
     with open(f'inputData/{year}/{day:02d}.txt', 'r') as f:
         data = f.read().split('\n')
     return data

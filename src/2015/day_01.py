@@ -17,37 +17,29 @@ def getData(year, day):
 # The solution
 ######################################################
 
-def calculateCalories(data):
-    result = []
-    calories = 0
-    for s in data:
-        s = s.strip()
-        if len(s) == 0:
-            result.append(calories)
-            calories = 0
-        else:
-            calories += int(s)
-    if (calories > 0):
-        result.append(calories)
-    return result
-
 def part1(data):
-    result = calculateCalories(data)
-    result.sort(reverse=True)
-    return result[0]
+    plus = data.count('(')
+    minus = data.count(')')
+    return plus - minus
 
 def part2(data):
-    result = calculateCalories(data)
-    result.sort(reverse=True)
-    return result[0] + result[1] + result[2]
+    floor = 0
+    for i in range(len(data)):
+        if data[i] == '(':
+            floor += 1
+        else:
+            floor -= 1
+        if floor == -1:
+            return i + 1
+    return -1
 
 if __name__ == '__main__':
-    year = 2022
+    year = 2015
     day = 1
     data = getData(year, day)
-    result1 = part1(data)              
-    result2 = part2(data)              
+    result1 = part1(data[0])              
+    result2 = part2(data[0])              
 
     print(f'Results - {year}/{day:02d}:')
-    print(f"Result 1 - {result1}") # 69836
-    print(f"Result 2 - {result2}") # 207968
+    print(f"Result 1 - {result1}") # 232
+    print(f"Result 2 - {result2}") # 1783
