@@ -27,6 +27,8 @@ def calculateCalories(data):
             calories = 0
         else:
             calories += int(s)
+    if (calories > 0):
+        result.append(calories)
     return result
 
 def part1(data):

@@ -1,3 +1,4 @@
+import pytest
 from day_06 import part1, part2
 
 def test_1_1():
