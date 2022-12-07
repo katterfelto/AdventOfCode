@@ -1,17 +1,17 @@
 import aocd
 from os.path import exists
 
-year = 2022
-day = 6
-
 ######################################################
 # Get the Input data
 ######################################################
-if not exists(f'./inputData/{year}/{day:02d}.txt'):
-    with open(f'./inputData/{year}/{day:02d}.txt', 'w') as f:
-        f.write(aocd.get_data(day=day, year=2022))
-with open(f'inputData/{year}/{day:02d}.txt', 'r') as f:
-    data = f.read().split('\n')
+def getData(year, day):
+    data = None
+    if not exists(f'./inputData/{year}/{day:02d}.txt'):
+        with open(f'./inputData/{year}/{day:02d}.txt', 'w') as f:
+            f.write(aocd.get_data(day=day, year=2022))
+    with open(f'inputData/{year}/{day:02d}.txt', 'r') as f:
+        data = f.read().split('\n')
+    return data
 
 ######################################################
 # The solution
@@ -43,12 +43,13 @@ def part2(data):
             buffer.pop()
     return -1
 
-######################################################
-# Output the results
-######################################################
-result1 = part1(data[0])              
-result2 = part2(data[0])              
+if __name__ == '__main__':
+    year = 2022
+    day = 6
+    data = getData(year, day)
+    result1 = part1(data)              
+    result2 = part2(data)              
 
-print(f'Results - {year}/{day:02d}:')
-print(f"Result 1 - {result1}") # 1965
-print(f"Result 2 - {result2}") # 2773
+    print(f'Results - {year}/{day:02d}:')
+    print(f"Result 1 - {result1}") # 1965
+    print(f"Result 2 - {result2}") # 2773
