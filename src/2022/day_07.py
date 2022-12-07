@@ -54,6 +54,8 @@ def createStructure(data, i):
             (child, i) = createStructure(data, i + 1)
             result['children'][name] = child
             result['total'] += child['total']
+            if result['total'] == 0:
+                pass
         elif data[i].startswith('$ ls'):
             i += 1
             while i < len(data) and not data[i].startswith("$"):
@@ -61,8 +63,9 @@ def createStructure(data, i):
                     pass
                 else:
                     j = data[i].index(' ')
-                    result['size'] += int(data[i][0:j])
-                    result['total'] += int(data[i][0:j])
+                    fSize = int(data[i][0:j])
+                    result['size'] += fSize
+                    result['total'] += fSize
                 i += 1
     return (result, i)
 
@@ -84,7 +87,7 @@ def part2(data):
     free = 70000000 - struct['total']
     required = 30000000 - free
     (name, size) = dirWithSmallestTotalAbove(required, '/', struct)
-    return name
+    return size
 
 if __name__ == '__main__':
     year = 2022
@@ -95,4 +98,4 @@ if __name__ == '__main__':
 
     print(f'Results - {year}/{day:02d}:')
     print(f"Result 1 - {result1}") # 1391690
-    print(f"Result 2 - {result2}") # NOT dqbnbl
+    print(f"Result 2 - {result2}") # 5469168

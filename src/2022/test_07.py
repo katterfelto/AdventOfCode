@@ -34,4 +34,4 @@ def test_1_1(testData):
     assert part1(testData) == 95437
 
 def test_2_1(testData):
-    assert part2(testData) == 'd'
+    assert part2(testData) == 24933642
