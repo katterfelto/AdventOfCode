@@ -19,6 +19,7 @@ def getData(year, day):
 
 def calculateScenicScore(data, r, c):
     maxHeight = data[r][c]
+    # Check up view
     up = 0
     i = r
     while i > 0 and data[i][c] <= maxHeight:
@@ -26,29 +27,31 @@ def calculateScenicScore(data, r, c):
         up += 1
         if data[i][c] >= maxHeight:
             break
-        
+    # Check left view
     left = 0
     i = c
-    while i > 0 and data[r][i] <= maxHeight:
+    while i > 0:
         i -= 1
-        if i > 0:
-            left += 1
+        left += 1
         if data[r][i] >= maxHeight:
             break
+    # Check right view
     right = 0
     i = c
-    while i < len(data[0]) - 1 and data[r][i] <= maxHeight:
+    while i < len(data[0]) - 1:
         i += 1
         right += 1
         if data[r][i] >= maxHeight:
             break
+    # Check down view
     down = 0
     i = r
-    while i < len(data) - 1 and data[i][c] <= maxHeight:
-        down += 1
+    while i < len(data) - 1:
         i += 1
+        down += 1
         if data[i][c] >= maxHeight:
             break
+    # Calculate the score
     return up * left * right * down
 
 def part1(data):
@@ -95,7 +98,6 @@ def part1(data):
 
 def part2(data):
     bestScore = 0
-    # Check each row
     for r in range(len(data)):
         for c in range(len(data[0])):
             bestScore = max(bestScore, calculateScenicScore(data, r, c))
@@ -110,4 +112,4 @@ if __name__ == '__main__':
 
     print(f'Results - {year}/{day:02d}:')
     print(f"Result 1 - {result1}") # 1676
-    print(f"Result 2 - {result2}") # 
+    print(f"Result 2 - {result2}") # 313200
