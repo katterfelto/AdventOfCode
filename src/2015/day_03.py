@@ -74,4 +74,4 @@ if __name__ == '__main__':
 
     print(f'Results - {year}/{day:02d}:')
     print(f"Result 1 - {result1}") # 2081
-    print(f"Result 2 - {result2}") # 
+    print(f"Result 2 - {result2}") # 2341
